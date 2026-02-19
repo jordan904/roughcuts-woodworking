@@ -21,13 +21,11 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; height: auto; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   body {
     font-family: 'Inter', sans-serif;
     background: var(--charcoal);
     color: var(--cream);
-    overflow-x: hidden;
-    min-height: 0;
   }
 
   /* ─── NAVIGATION ─── */
@@ -250,8 +248,9 @@
     gap: 5rem;
     padding: 8rem 4rem;
     align-items: center;
+    overflow: hidden;
   }
-  .about-images { position: relative; }
+  .about-images { position: relative; overflow: hidden; }
   .about-gold-block {
     position: absolute;
     top: -1rem; left: -1rem;
