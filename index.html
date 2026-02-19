@@ -21,12 +21,13 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; height: auto; }
   body {
     font-family: 'Inter', sans-serif;
     background: var(--charcoal);
     color: var(--cream);
     overflow-x: hidden;
+    min-height: 0;
   }
 
   /* ─── NAVIGATION ─── */
@@ -695,7 +696,7 @@
 
   /* ─── FOOTER ─── */
   footer {
-    padding: 3rem 4rem;
+    padding: 2rem 4rem;
     border-top: 1px solid rgba(240,235,227,0.04);
     display: flex;
     justify-content: space-between;
@@ -703,18 +704,19 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
+  .footer-left { display: flex; flex-direction: column; gap: 0.25rem; }
   .footer-logo {
     font-family: 'Playfair Display', serif;
     font-size: 0.95rem;
     color: var(--cream);
   }
   .footer-logo span { color: var(--oak); }
-  .footer-copy { font-size: 0.72rem; color: var(--text-dim); }
   .footer-tagline {
     font-size: 0.72rem;
     color: var(--text-dim);
     font-style: italic;
   }
+  .footer-copy { font-size: 0.72rem; color: var(--text-dim); }
 
   /* ─── REVEAL ─── */
   .reveal {
@@ -1224,9 +1226,11 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Rough Cuts <span>Woodworking</span> Studio</div>
+  <div class="footer-left">
+    <div class="footer-logo">Rough Cuts <span>Woodworking</span> Studio</div>
+    <div class="footer-tagline">Every grain tells a story.</div>
+  </div>
   <div class="footer-copy">&copy; 2025 Rough Cuts Woodworking Studio &middot; Halifax, Nova Scotia &middot; Est. 2020</div>
-  <div class="footer-tagline">Every grain tells a story.</div>
 </footer>
 
 <script>
