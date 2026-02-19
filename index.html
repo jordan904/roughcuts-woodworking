@@ -524,6 +524,13 @@
   }
   .testimonial-name { font-size: 0.85rem; color: var(--cream); font-weight: 400; }
   .testimonial-meta { font-size: 0.68rem; color: var(--text-dim); margin-top: 0.1rem; }
+  .testimonials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .testimonial-card { width: calc(33.333% - 1rem); }
 
   /* ─── VISIT / CTA ─── */
   .visit-band {
@@ -737,6 +744,7 @@
     .process-steps { grid-template-columns: repeat(2, 1fr); }
     .process-step::after { display: none; }
     .testimonials { padding: 6rem 2rem; }
+    .testimonial-card { width: calc(50% - 1rem); }
     .visit-band { padding: 4rem 2rem; }
     .contact { padding: 6rem 2rem; gap: 3rem; }
     footer { padding: 2rem; }
@@ -776,13 +784,6 @@
     .map-section { height: 300px; }
     footer { flex-direction: column; text-align: center; }
   }
-  .testimonials-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  .testimonial-card { width: calc(33.333% - 1rem); }
 </style>
 </head>
 <body>
