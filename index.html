@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Cuts Woodworking Studio | Halifax, Nova Scotia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal: #1a1a18;
+    --dark: #232320;
+    --warm: #2a2826;
+    --oak: #b08850;
+    --oak-light: #d4a85c;
+    --oak-glow: #e8c47a;
+    --cream: #f0ebe3;
+    --offwhite: #faf8f5;
+    --text: #c4bfb6;
+    --text-dim: #8a857d;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--charcoal);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.4rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(26,26,24,0.96), transparent);
+    backdrop-filter: blur(6px);
+    transition: background 0.4s;
+  }
+  nav.scrolled { background: rgba(26,26,24,0.98); }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(176,136,80,0.4);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .nav-logo-icon img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+  }
+  .nav-logo-text span { color: var(--oak); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--oak); }
+  .nav-cta {
+    background: var(--oak);
+    color: var(--charcoal) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 500;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--oak-light) !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    cursor: pointer; z-index: 101;
+  }
+  .nav-hamburger span {
+    width: 24px; height: 1.5px;
+    background: var(--cream);
+    transition: all 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 100vh; min-height: 750px;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('rcuts.jpg') center/cover no-repeat;
+    transform: scale(1.05);
+    animation: heroZoom 14s ease-out forwards;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to   { transform: scale(1.0); }
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to right, rgba(26,26,24,0.93) 0%, rgba(26,26,24,0.55) 55%, rgba(26,26,24,0.25) 100%),
+      linear-gradient(to top, rgba(26,26,24,0.95) 0%, transparent 35%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 700px;
+    padding: 0 4rem;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    padding: 0.45rem 1.1rem;
+    border: 1px solid rgba(176,136,80,0.25);
+    font-size: 0.6rem;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--oak);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    background: rgba(176,136,80,0.04);
+  }
+  .hero-badge::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--oak);
+    animation: pulse 2.5s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--offwhite);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--oak); font-weight: 300; }
+  .hero-sub {
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.85;
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--oak);
+    color: var(--charcoal);
+    padding: 0.85rem 2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--oak-light); }
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid rgba(240,235,227,0.15);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--oak); color: var(--oak); }
+
+  .hero-stats {
+    position: absolute;
+    right: 4rem; bottom: 6rem; z-index: 2;
+    display: flex; flex-direction: column; gap: 2.5rem;
+  }
+  .hero-stat { text-align: right; }
+  .hero-stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 300;
+    color: var(--offwhite); line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.65rem; color: var(--text-dim);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* ─── SHARED ─── */
+  .section-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--oak);
+    margin-bottom: 1rem;
+    padding-left: 2.5rem;
+    position: relative;
+  }
+  .section-tag::before {
+    content: '';
+    position: absolute; left: 0; top: 50%;
+    width: 2rem; height: 1px;
+    background: var(--oak);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--offwhite);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--oak); }
+  .divider-line {
+    width: 40px; height: 1px;
+    background: var(--oak);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ─── ABOUT ─── */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    padding: 8rem 4rem;
+    align-items: center;
+  }
+  .about-images { position: relative; }
+  .about-gold-block {
+    position: absolute;
+    top: -1rem; left: -1rem;
+    width: 50%; height: 60%;
+    border: 1px solid rgba(176,136,80,0.15);
+    z-index: 0;
+  }
+  .about-img-main {
+    position: relative; z-index: 1;
+    width: 100%; height: 500px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .about-img-accent {
+    position: absolute;
+    bottom: -2rem; right: -2rem;
+    width: 200px; height: 260px;
+    object-fit: cover;
+    border: 4px solid var(--charcoal);
+    z-index: 2;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .about-text p {
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+  .about-highlights {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .highlight-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--cream);
+    font-weight: 300;
+  }
+  .highlight-dot {
+    width: 5px; height: 5px;
+    background: var(--oak);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── MATERIALS BANNER ─── */
+  .materials-band {
+    padding: 4rem;
+    background: var(--warm);
+    border-top: 1px solid rgba(176,136,80,0.1);
+    border-bottom: 1px solid rgba(176,136,80,0.1);
+  }
+  .materials-inner {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .material-item {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.4rem;
+  }
+  .material-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--cream);
+    font-weight: 400;
+  }
+  .material-sub {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ─── SERVICES / WHAT WE CREATE ─── */
+  .services {
+    padding: 8rem 4rem;
+    background: var(--dark);
+  }
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: rgba(240,235,227,0.02);
+    border: 1px solid rgba(240,235,227,0.04);
+    padding: 2.5rem 2rem;
+    transition: all 0.4s;
+  }
+  .service-card:hover {
+    background: rgba(240,235,227,0.04);
+    border-color: rgba(176,136,80,0.2);
+    transform: translateY(-4px);
+  }
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: rgba(176,136,80,0.1);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--offwhite);
+    margin-bottom: 0.75rem;
+  }
+  .service-card p {
+    font-size: 0.83rem;
+    color: var(--text);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ─── GALLERY ─── */
+  .gallery { padding: 8rem 4rem; }
+  .gallery-header { margin-bottom: 3rem; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 0.75rem;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+  .gallery-item.tall { grid-row: span 2; aspect-ratio: auto; }
+  .gallery-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 1.5rem 1rem 1rem;
+    background: linear-gradient(to top, rgba(26,26,24,0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .gallery-item:hover .gallery-caption { opacity: 1; }
+  .gallery-caption span {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oak-glow);
+  }
+
+  /* ─── PROCESS ─── */
+  .process {
+    padding: 8rem 4rem;
+    background: var(--dark);
+  }
+  .process-header { text-align: center; margin-bottom: 4rem; }
+  .process-header .section-tag { padding-left: 0; display: block; }
+  .process-header .section-tag::before { display: none; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .process-step { text-align: center; position: relative; }
+  .process-step::after {
+    content: '';
+    position: absolute;
+    top: 2rem; right: -1rem;
+    width: calc(100%);
+    height: 1px;
+    background: linear-gradient(to right, rgba(176,136,80,0.3), transparent);
+  }
+  .process-step:last-child::after { display: none; }
+  .process-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: rgba(176,136,80,0.2);
+    margin-bottom: 1rem;
+  }
+  .process-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .process-step p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials { padding: 8rem 4rem; }
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .testimonials-header .section-tag { display: block; padding-left: 0; }
+  .testimonials-header .section-tag::before { display: none; }
+  .google-badge {
+    display: inline-flex;
+    align-items: center; gap: 0.75rem;
+    margin-top: 1rem;
+    padding: 0.6rem 1.4rem;
+    background: rgba(240,235,227,0.03);
+    border: 1px solid rgba(240,235,227,0.06);
+  }
+  .google-badge svg { width: 20px; height: 20px; }
+  .google-badge-text { font-size: 0.8rem; color: var(--cream); font-weight: 500; }
+  .google-badge-stars { display: flex; gap: 2px; }
+  .google-badge-stars svg { width: 14px; height: 14px; color: #f4b400; }
+  .google-badge-count { font-size: 0.7rem; color: var(--text-dim); }
+  .testimonial-card {
+    background: rgba(240,235,227,0.02);
+    border: 1px solid rgba(240,235,227,0.04);
+    padding: 2rem;
+    transition: all 0.4s;
+    display: flex; flex-direction: column;
+  }
+  .testimonial-card:hover {
+    background: rgba(240,235,227,0.04);
+    border-color: rgba(176,136,80,0.2);
+    transform: translateY(-4px);
+  }
+  .testimonial-stars { display: flex; gap: 3px; margin-bottom: 1.25rem; }
+  .testimonial-stars svg { width: 15px; height: 15px; color: #f4b400; }
+  .testimonial-text {
+    font-size: 0.86rem;
+    color: var(--text);
+    line-height: 1.85;
+    flex: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 0.75rem;
+    border-top: 1px solid rgba(240,235,227,0.04);
+    padding-top: 1.25rem;
+  }
+  .testimonial-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(176,136,80,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 500;
+    color: var(--oak); flex-shrink: 0;
+  }
+  .testimonial-name { font-size: 0.85rem; color: var(--cream); font-weight: 400; }
+  .testimonial-meta { font-size: 0.68rem; color: var(--text-dim); margin-top: 0.1rem; }
+
+  /* ─── VISIT / CTA ─── */
+  .visit-band {
+    padding: 6rem 4rem;
+    background: var(--oak);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .visit-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('rcuts 13.jpg') center/cover no-repeat;
+    opacity: 0.08;
+  }
+  .visit-band * { position: relative; z-index: 1; }
+  .visit-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+  .visit-band h2 em { font-style: italic; }
+  .visit-band p {
+    font-size: 0.9rem;
+    color: rgba(26,26,24,0.7);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .btn-dark {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 0.85rem 2.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  .btn-dark:hover { background: var(--dark); }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    padding: 8rem 4rem;
+  }
+  .contact-info p {
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.85;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .contact-icon {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(176,136,80,0.08);
+    border: 1px solid rgba(176,136,80,0.15);
+    color: var(--oak);
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 18px; height: 18px; }
+  .contact-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.2rem;
+  }
+  .contact-value { font-size: 0.92rem; color: var(--cream); font-weight: 300; }
+  .contact-value a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .contact-value a:hover { color: var(--oak); }
+  .contact-form {
+    background: rgba(240,235,227,0.02);
+    border: 1px solid rgba(240,235,227,0.04);
+    padding: 2.5rem;
+  }
+  .contact-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--offwhite);
+    margin-bottom: 0.5rem;
+  }
+  .form-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 2rem; font-weight: 300; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(240,235,227,0.03);
+    border: 1px solid rgba(240,235,227,0.06);
+    color: var(--offwhite);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.86rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--oak); }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(196,191,182,0.3); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group select option { background: var(--dark); }
+  .btn-submit {
+    width: 100%; padding: 0.9rem;
+    background: var(--oak);
+    color: var(--charcoal);
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .btn-submit:hover { background: var(--oak-light); }
+
+  /* ─── MAP ─── */
+  .map-section {
+    height: 400px;
+    position: relative;
+  }
+  .map-section iframe {
+    width: 100%; height: 100%;
+    border: 0;
+    filter: grayscale(80%) contrast(1.1) brightness(0.7);
+    transition: filter 0.4s;
+  }
+  .map-section:hover iframe {
+    filter: grayscale(30%) contrast(1) brightness(0.85);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(240,235,227,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--cream);
+  }
+  .footer-logo span { color: var(--oak); }
+  .footer-copy { font-size: 0.72rem; color: var(--text-dim); }
+  .footer-tagline {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* ─── REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 2rem; }
+    .hero-content { padding: 0 2rem; }
+    .hero-stats { right: 2rem; gap: 2rem; }
+    .about { padding: 6rem 2rem; gap: 3rem; }
+    .services { padding: 6rem 2rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery { padding: 6rem 2rem; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .gallery-item.tall { grid-row: auto; aspect-ratio: 1; }
+    .gallery-item.wide { grid-column: auto; aspect-ratio: 1; }
+    .process { padding: 6rem 2rem; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-step::after { display: none; }
+    .testimonials { padding: 6rem 2rem; }
+    .visit-band { padding: 4rem 2rem; }
+    .contact { padding: 6rem 2rem; gap: 3rem; }
+    footer { padding: 2rem; }
+    .materials-band { padding: 3rem 2rem; }
+    .materials-inner { gap: 2.5rem; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.active {
+      display: flex; flex-direction: column;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(26,26,24,0.98);
+      backdrop-filter: blur(20px);
+      justify-content: center; align-items: center;
+      gap: 2rem; z-index: 100;
+    }
+    .nav-links.active a { font-size: 1rem; }
+    .nav-hamburger { display: flex; }
+    .hero h1 { font-size: clamp(2rem, 8vw, 3.2rem); }
+    .hero-stats { display: none; }
+    .hero-content { padding: 0 2rem; }
+    .about { grid-template-columns: 1fr; }
+    .about-img-main { height: auto; aspect-ratio: 16/10; }
+    .about-img-accent { display: none; }
+    .about-gold-block { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item.tall { grid-row: auto; aspect-ratio: 1; }
+    .gallery-item.wide { grid-column: auto; aspect-ratio: 1; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .about-highlights { grid-template-columns: 1fr; }
+    .materials-inner { gap: 1.5rem; }
+    .map-section { height: 300px; }
+    footer { flex-direction: column; text-align: center; }
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <img src="rcuts 13.jpg" alt="Rough Cuts logo">
+    </div>
+    <span class="nav-logo-text">Rough Cuts <span>Studio</span></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#creations">Creations</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Commission a Piece</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Handcrafted in Halifax Since 2020</div>
+    <h1>Where Raw Wood<br>Becomes <em>Art.</em></h1>
+    <p class="hero-sub">
+      Rough Cuts Woodworking Studio crafts bespoke live edge tables, cutting boards, charcuterie boards, and custom furniture from the finest hardwoods. Each piece tells a story.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Commission a Piece</a>
+      <a href="#gallery" class="btn-outline">View Our Work</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat reveal reveal-delay-1">
+      <div class="hero-stat-number" data-count="24">0</div>
+      <div class="hero-stat-label">Five-Star Reviews</div>
+    </div>
+    <div class="hero-stat reveal reveal-delay-2">
+      <div class="hero-stat-number">5+</div>
+      <div class="hero-stat-label">Years Crafting</div>
+    </div>
+    <div class="hero-stat reveal reveal-delay-3">
+      <div class="hero-stat-number">&infin;</div>
+      <div class="hero-stat-label">Custom Possibilities</div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS BAND -->
+<div class="materials-band reveal">
+  <div class="materials-inner">
+    <div class="material-item">
+      <div class="material-name">Black Walnut</div>
+      <div class="material-sub">Rich & Dark</div>
+    </div>
+    <div class="material-item">
+      <div class="material-name">Curly Birch</div>
+      <div class="material-sub">Figured Grain</div>
+    </div>
+    <div class="material-item">
+      <div class="material-name">Purple Heart</div>
+      <div class="material-sub">Exotic Accent</div>
+    </div>
+    <div class="material-item">
+      <div class="material-name">Maple</div>
+      <div class="material-sub">Clean & Classic</div>
+    </div>
+    <div class="material-item">
+      <div class="material-name">Olive Wood</div>
+      <div class="material-sub">Mediterranean</div>
+    </div>
+    <div class="material-item">
+      <div class="material-name">Canary Wood</div>
+      <div class="material-sub">Warm & Vibrant</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-images reveal">
+    <div class="about-gold-block"></div>
+    <img class="about-img-main" src="rcuts5.jpg" alt="Sebastian in the Rough Cuts workshop">
+    <img class="about-img-accent" src="rcuts 12.jpg" alt="Rough Cuts branded branding iron stamp">
+  </div>
+  <div class="about-text reveal reveal-delay-2">
+    <span class="section-tag">The Studio</span>
+    <h2 class="section-title">Crafted with <em>intention,</em><br>built to last</h2>
+    <div class="divider-line"></div>
+    <p>Founded in 2020 in Halifax's North End, Rough Cuts Woodworking Studio was born from a deep respect for natural wood and the belief that everyday objects deserve to be beautiful. Each piece that leaves our shop is handcrafted with care, sealed with premium Odie's Oil, and stamped with our custom branding iron.</p>
+    <p>From a single end-grain cutting board to a full live edge dining table, we approach every project with the same attention to detail. Whether you're looking for the perfect gift, a statement piece for your home, or branded items for a corporate event, we'll bring your vision to life.</p>
+    <div class="about-highlights">
+      <div class="highlight-item"><div class="highlight-dot"></div><span>Live edge tables & furniture</span></div>
+      <div class="highlight-item"><div class="highlight-dot"></div><span>Cutting & charcuterie boards</span></div>
+      <div class="highlight-item"><div class="highlight-dot"></div><span>Custom coasters & accessories</span></div>
+      <div class="highlight-item"><div class="highlight-dot"></div><span>Corporate commissions</span></div>
+      <div class="highlight-item"><div class="highlight-dot"></div><span>Custom shelving & storage</span></div>
+      <div class="highlight-item"><div class="highlight-dot"></div><span>International shipping</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="creations">
+  <div class="services-header">
+    <div>
+      <span class="section-tag reveal">What We Create</span>
+      <h2 class="section-title reveal reveal-delay-1">Handcrafted<br><em>collections</em></h2>
+    </div>
+    <a href="#contact" class="btn-outline reveal reveal-delay-2">Start Your Commission</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <h3>Live Edge Tables</h3>
+      <p>Statement dining and coffee tables that celebrate the natural contours of the wood. Each slab is carefully selected, finished, and paired with custom steel or wood bases.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">02</div>
+      <h3>Cutting & Charcuterie Boards</h3>
+      <p>From end-grain cutting boards to live edge charcuterie boards in olive, canary, and walnut. Finished with food-safe Odie's Oil and branded with our custom iron.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">03</div>
+      <h3>Coasters & Accessories</h3>
+      <p>Handcrafted coaster sets in walnut, maple, and purple heart with matching wooden stands. Perfect as gifts or elegant additions to any home.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">04</div>
+      <h3>Custom Furniture</h3>
+      <p>Bespoke bed frames, storage trunks, shelving units, and one-of-a-kind pieces designed to your specifications. Functional art built to last generations.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">05</div>
+      <h3>Custom Shelving</h3>
+      <p>Solid pine and hardwood shelves with hand-selected brackets. Designed to fit your space perfectly, whether it's a kitchen pantry or a living room feature wall.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">06</div>
+      <h3>Corporate & Event Commissions</h3>
+      <p>Branded batch orders for corporate events, client gifts, and retail. From custom-stamped charcuterie boards to engraved coaster sets — made to impress.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header reveal">
+    <span class="section-tag">Portfolio</span>
+    <h2 class="section-title">Every grain tells<br>a <em>story</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item tall">
+      <img src="rcuts3.jpg" alt="Live edge olive wood charcuterie board" loading="lazy">
+      <div class="gallery-caption"><span>Charcuterie Board</span></div>
+    </div>
+    <div class="gallery-item wide">
+      <img src="rcuts 9.jpg" alt="Dark wood dining table with star base" loading="lazy">
+      <div class="gallery-caption"><span>Custom Dining Table</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="rcuts1.jpg" alt="Walnut maple and purple heart coasters" loading="lazy">
+      <div class="gallery-caption"><span>Hardwood Coasters</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="rcut4.jpg" alt="Walnut swivel trinket box" loading="lazy">
+      <div class="gallery-caption"><span>Walnut Trinket Box</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="rcuts 6.jpg" alt="Live edge coffee table by wood stove" loading="lazy">
+      <div class="gallery-caption"><span>Live Edge Coffee Table</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="rcuts2.jpg" alt="Custom pine shelves with iron brackets" loading="lazy">
+      <div class="gallery-caption"><span>Custom Pine Shelves</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="rcuts 8.jpg" alt="Assorted small charcuterie boards" loading="lazy">
+      <div class="gallery-caption"><span>Board Collection</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="rcuts 11.jpg" alt="Rustic wooden storage trunk" loading="lazy">
+      <div class="gallery-caption"><span>Storage Trunk</span></div>
+    </div>
+    <div class="gallery-item wide">
+      <img src="rcuts 10.jpg" alt="Custom reclaimed wood bed frame with storage" loading="lazy">
+      <div class="gallery-caption"><span>Reclaimed Wood Bed Frame</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="rcuts 4.jpg" alt="Olive wood boards with resin inlay" loading="lazy">
+      <div class="gallery-caption"><span>Olive Wood & Resin</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-header reveal">
+    <span class="section-tag">How It Works</span>
+    <h2 class="section-title">From concept to <em>creation</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="process-num">01</div>
+      <h4>Consultation</h4>
+      <p>Swing by our shop or book an appointment to discuss your vision, wood preferences, and dimensions.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="process-num">02</div>
+      <h4>Design</h4>
+      <p>We select the perfect slab or materials and refine the design details together until it's exactly right.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="process-num">03</div>
+      <h4>Craft</h4>
+      <p>Your piece is handcrafted in our Halifax studio, finished with premium oils, and stamped with our brand.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="process-num">04</div>
+      <h4>Deliver</h4>
+      <p>Pickup from our North End shop or shipped to your door. We ship internationally for clients worldwide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="testimonials-header reveal">
+    <span class="section-tag">Client Stories</span>
+    <h2 class="section-title">24 Five-Star <em>reviews</em><br>on Google</h2>
+    <div class="google-badge">
+      <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      <div>
+        <div class="google-badge-text">Google Reviews</div>
+        <div class="google-badge-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="google-badge-count">5.0 rating &middot; 24 reviews</div>
+      </div>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="testimonial-text">Amazing piece of craftsmanship by Sebastian! He delivered the exact custom dimensions and aesthetic I had envisioned, with incredible precision and attention to detail. This is my first ever end-grain cutting board, and it's everything I hoped for. Sebastian never compromises on quality and truly values customer satisfaction.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">J</div>
+        <div>
+          <div class="testimonial-name">Jordan</div>
+          <div class="testimonial-meta">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT BAND -->
+<div class="visit-band reveal">
+  <h2>Visit Our <em>New Shop</em></h2>
+  <p>Now open at 2681 Fern Lane in Halifax's North End. Walk-ins welcome.</p>
+  <a href="https://maps.app.goo.gl/MsZm3sjhmo9dD79dA" target="_blank" class="btn-dark">Get Directions</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info reveal">
+    <span class="section-tag">Get In Touch</span>
+    <h2 class="section-title">Let's bring your<br><em>vision to life</em></h2>
+    <div class="divider-line"></div>
+    <p>Have an idea for a woodworking project? Whether it's a custom dining table, a set of branded charcuterie boards for an event, or something entirely unique, swing by our new location or book an appointment to discuss how we can make it a reality.</p>
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Studio</div>
+          <div class="contact-value"><a href="https://maps.app.goo.gl/MsZm3sjhmo9dD79dA" target="_blank">2681 Fern Lane, Halifax, NS</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Availability</div>
+          <div class="contact-value">Walk-ins welcome &middot; Appointments available</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Shipping</div>
+          <div class="contact-value">International shipping available</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal reveal-delay-2">
+    <h3>Start a Commission</h3>
+    <p class="form-sub">Tell us about your project and we'll be in touch.</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="Your email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Project Type</label>
+      <select>
+        <option>Select a project type...</option>
+        <option>Live Edge Table</option>
+        <option>Cutting / Charcuterie Board</option>
+        <option>Coasters & Accessories</option>
+        <option>Custom Furniture</option>
+        <option>Shelving</option>
+        <option>Corporate / Event Commission</option>
+        <option>Something Else</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Tell Us About Your Vision</label>
+      <textarea placeholder="Describe the piece you have in mind, preferred wood types, dimensions, timeline..."></textarea>
+    </div>
+    <button class="btn-submit">Send Inquiry</button>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-section">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2838.5!2d-63.59!3d44.66!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s2681+Fern+Lane+Halifax+NS!5e0!3m2!1sen!2sca!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Rough Cuts <span>Woodworking</span> Studio</div>
+  <div class="footer-copy">&copy; 2025 Rough Cuts Woodworking Studio &middot; Halifax, Nova Scotia &middot; Est. 2020</div>
+  <div class="footer-tagline">Every grain tells a story.</div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    const spans = hamburger.querySelectorAll('span');
+    if (navLinks.classList.contains('active')) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+    } else {
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    }
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        if (isNaN(target)) { counterObserver.unobserve(el); return; }
+        const duration = 2000;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target) + '+';
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>
